@@ -1,4 +1,4 @@
-[CFeather][homepage] is a package to provide C support for [Sublime Text 2][st2].
+[CFeather][homepage] is a package to provide C support for [Sublime Text][st].
 
 I created it because I'm not keen on Sublime's stock C package for the following reasons:
 
@@ -22,7 +22,7 @@ Here's a screenshot. Remember that CFeather isn't about specific colours, but ra
 ![Screenshot](https://github.com/frou/Sundried/raw/master/screenshot.png)
 
 [homepage]: https://github.com/frou/CFeather
-[st2]: http://www.sublimetext.com/
+[st]: http://www.sublimetext.com/
 [kiss]: http://en.wikipedia.org/wiki/KISS_principle
 [lang]: http://en.wikipedia.org/wiki/C_(programming_language)#ANSI_C_and_ISO_C
 [doxy]: http://www.stack.nl/~dimitri/doxygen/
