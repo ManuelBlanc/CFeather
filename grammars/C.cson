@@ -1,0 +1,153 @@
+{
+	"name"      : "C"
+	"scopeName" : "source.c"
+	"fileTypes" : [ "c", "h" ]
+	"author"    : "https://github.com/frou, ported to atom by MBlanc"
+	"uuid"      : "5C89418E-D063-4595-82F7-9D026EEA6296"
+
+	"repository":
+		"comment-block":
+			"name" : "comment.block.c"
+			"begin" : "\/\\*"
+			"end" : "\\*\/"
+		"comment-doxygen-block":
+			"name" : "comment.doxygen.block.c"
+			"begin" : "\/\\*[\\*!](?!\/)"
+			"end" : "\\*\/"
+			"patterns" : [
+				{ "include" : "#doxygen-command" }
+			]
+		"comment-line-double-slash":
+			"name" : "comment.line.double-slash.c"
+			"begin" : "\/\/"
+			"end" : "$"
+		"comment-doxygen-line-double-slash":
+			"name" : "comment.doxygen.line.double-slash.c"
+			"begin" : "\/\/[\/!]"
+			"end" : "$"
+			"patterns" : [
+				{ "include" : "#doxygen-command" }
+			]
+		"doxygen-command":
+			"name" : "comment.doxygen.command.c"
+			"match" : "[\\\\@]\\S*"
+
+	"patterns": [
+
+		# Comment
+		{ "include" : "#comment-doxygen-block" }
+		{ "include" : "#comment-block" }
+		{ "include" : "#comment-doxygen-line-double-slash" }
+		{ "include" : "#comment-line-double-slash" }
+
+		# String
+		{
+			"name" : "string.quoted.double.c"
+			"match" : "(\\bL)?\"([^\\\\]|\\\\\")*?\""
+		}	# old pattern: "(\\bL)?\"([^\\\\]|\\\\([\\\\\"'nrbtfav\\?]|[0-7]{1,3}|x[0-9A-Fa-f]{1,2}))*?\""
+		{
+			"name" : "string.other.preprocessor.c"
+			"begin" : "^\\s*#"
+			"end" : "[^\\\\]\\n|(?<=[^\\\\]\\n)"
+			"patterns" : [
+				{ "include" : "#comment-doxygen-block" }
+				{ "include" : "#comment-block" }
+				{ "include" : "#comment-doxygen-line-double-slash" }
+				{ "include" : "#comment-line-double-slash" }
+			]
+		}
+		{
+			"name" : "string.other.label.c"
+			"match" : "^\\s*(?!(case|default):)[A-Za-z_][A-Za-z_0-9]*:"
+		}
+
+		# Storage
+		{
+			"name" : "storage.modifier.c"
+			"match" : "\\b(auto|const|extern|register|static|volatile)\\b"
+		}
+		{
+			"name" : "storage.type.c"
+			"match" : "\\b(char|double|float|int|long|short|signed|unsigned|void)\\b"
+		}
+		{
+			"name" : "storage.type.tag.c"
+			"match" : "\\b((enum|struct|union)\\s+[A-Za-z_][A-Za-z_0-9]*)\\b(?!\\s*\\{)"
+		}
+		{
+			"name" : "storage.type.typedef.c"
+			"match" : "\\b(([A-Za-z_][A-Za-z_0-9]*_t)|i8|u8|i16|u16|i32|u32|i64|u64|f32|f64|byte|bool|va_list)\\b"
+		}
+
+		# Constant
+		{
+			"name" : "constant.numeric.floating-point.c"
+			"match" : "(\\b[0-9]+\\.[0-9]*|\\.[0-9]+)([eE][+-]?[0-9]+)?[fFlL]?\\b"
+		}
+		{
+			"name" : "constant.numeric.floating-point.c"
+			"match" : "\\b[0-9]+[eE][+-]?[0-9]+[fFlL]?\\b"
+		}
+		{
+			"name" : "constant.numeric.integer.c"
+			"match" : "\\b(0[xX][0-9A-Fa-f]+|0[0-7]*|[1-9][0-9]*)([uU][lL]?|[lL][uU]?)?\\b"
+		}
+		{
+			"name" : "constant.character.c"
+			"match" : "'([^\\\\]|\\\\([\\\\\"'nrbtfav\\?]|[0-7]{1,3}|x[0-9A-Fa-f]{1,2}))??'"
+		}
+		{
+			"name" : "constant.other.c"
+			"match" : "\\b([A-Z_][A-Z_0-9]*)\\b"
+		}
+		{
+			"name" : "constant.other.c"
+			"match" : "\\b(stdin|stdout|stderr)\\b"
+		}
+
+		# Keyword (Excluding "*")
+		{
+			"name" : "keyword.c"
+			"match" : "\\b(break|case|continue|default|do|else|enum|for|goto|if|return|sizeof|struct|switch|typedef|union|while)\\b"
+		}
+		{
+			"name" : "keyword.operator.compound.assignment.c"
+			"match" : "(\\+=|-=|\\*=|\/=|%=|<<=|>>=|&=|\\^=|\\|=)"
+		}
+		{
+			"name" : "keyword.operator.compound.other.c"
+			"match" : "(->|\\+\\+|--|<<|>>|<=|>=|==|!=|&&|\\|\\|)"
+		}
+		{
+			"name" : "keyword.operator.simple.c"
+			"match" : "(!|%|\\^|&|-|\\+|=|~|\\||\\.|<|>|\/|\\?)"
+		}
+
+		# Entity
+		{
+			"match" : "(?<!\\sreturn)(?<!\\selse)(?<=[A-Za-z_0-9])(\\**)(\\s*)(\\**)\\b([A-Za-z_][A-Za-z_0-9]*)\\b(?=\\s*\\()"
+			"captures" :
+				"1" : { "name" : "keyword.operator.simple.c" }
+				"3" : { "name" : "keyword.operator.simple.c" }
+				"4" : { "name" : "entity.name.function.c" }
+		}
+		{
+			"match" : "(?<=^)(\\**)\\b([A-Za-z_][A-Za-z_0-9]*)\\b(?=\\s*\\()"
+			"captures" :
+				"1" : { "name" : "keyword.operator.simple.c" }
+				"2" : { "name" : "entity.name.function.c" }
+		}
+
+		# Keyword ("*")
+		{
+			"name" : "keyword.operator.simple.c"
+			"match" : "(\\*)"
+		}
+
+		# Support
+		{
+			"name" : "support.function.c"
+			"match" : "\\b([A-Za-z_][A-Za-z_0-9]*)\\b(?=\\s*\\()"
+		}
+	]
+}

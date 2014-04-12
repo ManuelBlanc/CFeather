@@ -1,0 +1,4 @@
+'.source.c':
+  'editor':
+    'commentStart': '/*'
+    'commentEnd': '*/'

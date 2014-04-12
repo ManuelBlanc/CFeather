@@ -1,0 +1,13 @@
+{
+  "name": "language-cfeather",
+  "version": "0.0.0",
+  "description": "A lighter C89 package.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ManuelBlanc/CFeather.git"
+  },
+  "author": "frou, ManuelBlanc",
+  "engines": {
+    "atom": ">0.50.0"
+  }
+}

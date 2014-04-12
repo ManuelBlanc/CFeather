@@ -1,0 +1,94 @@
+'.source.c':
+	'/* ... */':
+		'prefix': 'com'
+		'body': '/* ${1} */'
+	'enum':
+		'prefix': 'enum'
+		'body': '''
+			enum ${1} {
+				${2}
+			}${3};
+		'''
+	'fprintf(stderr)':
+		'prefix': 'err'
+		'body': 'fprintf(stderr, "${1}\\n"${2});'
+	'for:
+		'prefix': 'for'
+		'body': '''
+			for (${1}; ${2}; ${3}) {
+				${4}
+			}
+		'''
+	'function':
+		'prefix': 'func'
+		'content': '''
+			${1:void} ${2}(${3:void})
+			{
+				${4}
+			}
+		'''
+	'/*---*/':
+		'prefix': 'hr'
+		'body': '/*---------------------------------------------------------------------------*/'
+	'if':
+		'prefix': 'if'
+		'body': '''
+			if (${1}) {
+				${2}
+			}
+		'''
+	'if-else':
+		'prefix': 'ife'
+		'body': '''
+			if (${1}) {
+				${2}
+			} else {
+				${3}
+			}
+		'''
+	'#include ""':
+		'prefix': 'inc'
+		'body': '#include "${1}.h"'
+
+	'#include <>':
+		'prefix': 'incs'
+		'body': '#include <${1}.h>'
+	'fprintf(stdout)':
+		'prefix': 'out'
+		'body': 'fprintf(stdout, "${1}\\n"${2});'
+	'struct':
+		'prefix': 'struct'
+		'body': '''
+			struct ${1} {
+				${2}
+			}${3};
+		'''
+	'switch':
+		'prefix': 'switch'
+		'body': '''
+			switch (${1}) {
+			case ${2}:
+				${3}
+				break;
+			case ${4}:
+				${5}
+				break;
+			default:
+				${6}
+				break;
+			}
+		'''
+	'union':
+		'prefix': 'union'
+		'body': '''
+			union ${1} {
+				${2}
+			}${3};
+		'''
+	'while':
+		'prefix': 'while'
+		'body': '''
+			while (${1}) {
+				${2}
+			}
+		'''
