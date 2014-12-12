@@ -1,3 +1,10 @@
+
+This repository holds an [Atom] port of the fantastic [CFeather][homepage] package created by [frou].
+
+Below is a reproduction of the original readme file:
+
+------
+
 [CFeather][homepage] is a package to provide C support for [Sublime Text][st].
 
 I created it because I'm not keen on Sublime's stock C package for the following reasons:
@@ -29,3 +36,6 @@ Here's a screenshot. Remember that CFeather isn't about specific colours, but ra
 [doxy-col]: https://github.com/frou/CFeather/issues/1#issuecomment-10380609
 [spc]: http://wbond.net/sublime_packages/package_control
 [sd]: https://github.com/frou/Sundried
+
+[atom]: https://atom.io
+[frou]: https://github.com/frou
